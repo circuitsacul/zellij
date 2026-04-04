@@ -215,7 +215,7 @@ pub enum ExitReason {
 impl Display for ExitReason {
     fn fmt(&self, f: &mut Formatter) -> Result<(), Error> {
         match self {
-            Self::Normal => write!(f, "Bye from Zellij!"),
+            Self::Normal => Ok(()),
             Self::NormalDetached => write!(f, "Session detached"),
             Self::ForceDetached => write!(
                 f,
