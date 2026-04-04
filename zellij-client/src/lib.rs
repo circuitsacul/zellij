@@ -1242,8 +1242,13 @@ pub fn start_client(
         let show_cursor = "\u{1b}[?25h";
         let restore_snapshot = "\u{1b}[?1049l";
         let goto_start_of_last_line = format!("\u{1b}[{};{}H", full_screen_ws.rows, 1);
+
+        if !exit_msg.is_empty() {
+            exit_msg.push('\n')
+        }
+
         let goodbye_message = format!(
-            "{}\n{}{}{}{}\n",
+            "{}\n{}{}{}{}",
             goto_start_of_last_line, restore_snapshot, reset_style, show_cursor, exit_msg
         );
 
